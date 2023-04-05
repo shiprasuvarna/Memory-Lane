@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="selectpic.css">
+  <title>Upload a picture</title>
+</head>
+<body>
+  <nav>
+    <div class="container flex main-nav">
+        <a href="#" class="company-logo img"><img src="/images/WhatsApp Image 2023-04-04 at 1.01.59 PM.jpeg" alt="company-logo"></a>
+        <div class="nav-links">
+            <ul class="flex">
+                <li><a href="/caretaker-dashboard/caretaker.html"class="hover-link">Dashboard</a></li>
+                <li><a href="about-us.html"class="hover-link">About Us</a></li>
+                <li><a href="#"class="hover-link">Contact Us</a></li>
+                <li><a href="/homepage/index.html"class="hover-link primary-button">Log Out</a></li>
+              </ul>
+        </div>
+    </div>
+  </nav>
+  <header>
+    <div class="container flex header-section">
+        <h1>CHOOSE A PICTURE</h1>
+        <!-- <i class="fa-solid fa-user-doctor header-symbol"></i> -->
+    </div>
+  </header>
+ <div class="box">
+  <input type="file" id="file-input" accept="image/png , image/jpeg" onchange="preview()" multiple>
+  <label for="file-input">
+    <i class="uil uil-upload"></i> &nbsp; Choose a Photo
+  </label>
+  <p id="num-of-files">No Files Choosen</p>
+  <div id="images"></div>
+ </div>
+ <input type="submit" value="Upload Images">
+  <footer>
+    <div class="container flex footer-container">
+      <a href="#" class="hover-link footer-text">Privacy Policy</a>
+      <a href="#" class="hover-link footer-text">Terms and Conditions</a>
+      <a href="#" class="hover-link footer-text">Security Information</a>
+    </div>
+  </footer>
+
+  <script src="selectpic.js"></script>
+  
+</body>
+</html>

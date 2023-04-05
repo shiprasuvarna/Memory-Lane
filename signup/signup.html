@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-bar flex main-nav">
+        <a href="#" class="company-logo img"><img src="/images/WhatsApp Image 2023-04-04 at 1.01.59 PM.jpeg" alt="company-logo"></a>
+        <div class="nav-links">
+            <ul class="flex">
+                <li><a href="/homepage/index.html"class="hover-link">Homepage</a></li>
+                <li><a href="about-us.html"class="hover-link">About Us</a></li>
+                <li><a href="#"class="hover-link">Contact Us</a></li>
+              </ul>
+        </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="signup">
+      <form action="" class="sign-up-form">
+        <h1 class="title">SIGN UP</h1>
+        <div class="input-field">
+          <i class="uil uil-user"></i>
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="input-field">
+          <i class="uil uil-envelope-alt"></i>
+          <input type="text" placeholder="Email">
+        </div>
+        <div class="input-field">
+          <i class="uil uil-lock"></i>
+          <input type="password" placeholder="Password">
+        </div>
+        <div class="input-field">
+          <label for="person">SIGN UP AS:</label>
+          <select name="person" id="person">
+          <option value="doctor">DOCTOR</option>
+          <option value="caretaker">CARETAKER</option>
+          <option value="patient">PATIENT</option>
+          </select>
+        </div>
+        <a href="/caretaker-dashboard/caretaker.html" class="primary-button">Sign Up</a>
+        
+        <!-- <button type="submit" value="Sign Up" class="primary-button"> -->
+        <p class="social-text">Connect With Us On Social Platforms</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="uil uil-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="uil uil-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="uil uil-twitter"></i>
+          </a>
+        </div>
+      </form>
+      <form action="" class="log-in-form">
+        <h1 class="title">LOG IN</h1>
+        <div class="input-field">
+          <i class="uil uil-user"></i>
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="input-field">
+          <i class="uil uil-lock"></i>
+          <input type="password" placeholder="Password">
+        </div>
+        <div class="input-field">
+          <label for="person">LOGIN IN AS:</label>
+          <select name="person" id="person">
+          <option value="doctor">DOCTOR</option>
+          <option value="caretaker">CARETAKER</option>
+          <option value="patient">PATIENT</option>
+          </select>
+        </div>
+        <a href="/caretaker-dashboard/caretaker.html" class="primary-button">Log In</a>
+        <p class="social-text">Connect With Us On Social Platforms</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="uil uil-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="uil uil-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="uil uil-twitter"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h2 style="margin-left: -67;">Don't have an account?</h2>
+          <button class="primary-button" id="sign-up" style="margin-left: -90px;">Sign Up</button>
+        </div>
+
+      </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h2>Already have an account?</h2>
+            <button class="primary-button" id="log-in">Log In</button>
+          </div>
+    </div>
+  </div>
+  </div>
+  <footer>
+    <div class="footer flex footer-container">
+      <a href="#" class="hover-link footer-text">Privacy Policy</a>
+      <a href="#" class="hover-link footer-text">Terms and Conditions</a>
+      <a href="#" class="hover-link footer-text">Security Information</a>
+    </div>
+  </footer>
+  <script src="signup.js"></script>
+</body>
+</html>

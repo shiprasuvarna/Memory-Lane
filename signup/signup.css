@@ -122,7 +122,6 @@ ul {
 
 .container{
   display: flex;
-  margin-left: 10rem;
   align-items: center;
   justify-content: center;
   background: var(--ternary-color);

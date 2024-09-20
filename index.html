@@ -16,6 +16,173 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
+    <!--Navbar-->
+
+    <header class="sticky top-0 h-[90px] shadow-xl z-30 bg-white">
+        <div class="container mx-auto flex justify-between h-full items-center">
+            <a href="#">
+                <img src="assets/logo.jpeg" alt="" class="w-[200px]">
+            </a>
+            <nav>
+                <div class="cursor-pointer lg:hidden " id="nav_trigger_btn">
+                    <i class="ri-menu-4-line text-4xl text-primary"></i>
+                </div>
+                <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
+                    <li class="p-2"><a href="#home">Home</a></li>
+                    <li class="p-2"><a href="#about">About</a></li>
+                    <li class="p-2"><a href="#contact">Contact Us</a></li>
+                    <button class="btn-accent w-[120px] h-[100px] 
+                    lg:h-[50px] lg:p-0 p-4 rounded-lg"><a href="" class="text-white hover:text-black">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="max-w-[1920px] mx-auto bg-white overflow-hidden">
+        <!--Hero-->
+        <section class="hero h-[640px] xl:h-[700px] bg-hero bg-center lg:bg-cover bg-no-repeat bg-fixed xl:rounded-bl-[290px] relative z-20" id="home">
+            <div class="container mx-auto h-full flex items-center justify-center xl:justify-start">
+                <div class="hero__text w-[567px] flex flex-col items-center text-center xl:text-left lg:items-start">
+                    <h1 class="h1 mb-8">Memory Lane</h1>
+                    <p class="mb-8">
+                        One stop solution for dementia patients, caretakers and doctors. 
+                    </p>
+                    <button class="btn btn-accent mx-auto xl:mx-0"><a href="" class="text-white hover:text-primary">Get Started</a>
+                        <i class="ri-arrow-right-line text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!--About-->
+        <section class="steps mt-[30px] xl:mt-[30px] relative z-20 mb-20" id="about">
+            <div class="container mx-auto">
+                <div class="flex justify-center text-center pb-10">
+                    <h2 class="h2 ">About Us</h2>
+                </div>
+                <div class="grid grid-cols-1 gap-12 xl:grid-cols-3">
+    
+    
+                    <!--Step 1-->
+                    <div class="steps__step text-center bg-accent-secondary p-4 rounded-xl">
+                        <div class="mb-4">
+                            <i class="ri-brain-2-line text-5xl text-accent"></i>  
+                        </div>
+                        <h3 class="h3 mb-5">Dementia Patients</h3>
+                        <p class="mb-5 max-w-md mx-auto">Memory Lane helps patients by providing mind games, photo gallery to keep their minds active</p>
+                        <a href="#" class="font-medium">Read More
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+    
+    
+                    <!--Step 2-->
+                    <div class="steps__step text-center bg-accent-secondary p-4 rounded-xl">
+                        <div class="mb-4">
+                            <i class="ri-empathize-line text-5xl text-accent"></i>  
+                        </div>
+                        <h3 class="h3 mb-5">Caretakers</h3>
+                        <p class="mb-5 max-w-md mx-auto">Memory Lane helps caretakers to keep track of the patients health with ease</p>
+                        <a href="#" class="font-medium">Read More
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+    
+    
+                    <!--Step 3-->
+                    <div class="steps__step text-center bg-accent-secondary p-4 rounded-xl">
+                        <div class="mb-4">
+                            <i class="ri-nurse-line text-5xl text-accent"></i>  
+                        </div>
+                        <h3 class="h3 mb-5">Doctors</h3>
+                        <p class="mb-5 max-w-md mx-auto">Memory Lane provides electronic healthcare system to have better access to the patients health history.</p>
+                        <a href="#" class="font-medium">Read More
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </div>
+    
+                   
+                  
+                </div>
+            </div>
+        </section>
+        <section class="about mt-[80px] xl:mt-[120px] relative z-20">
+            <div class="container mx-auto xl:px-0">
+                <div class="flex flex-col text-center xl:text-left xl:flex-row justify-between items-center gap-8 xl:gap-[74px]">
+                    <div class="about__text flex-1 order-1 xl:order-none max-w-xl xl:max-w-[410px] flex flex-col items-center xl:items-start gap-8 ">
+                        <h2 class="h2">Preserving the memories that matter most. </h2>
+                        <p>At Memory Lane, we are dedicated to supporting individuals and families affected by dementia. Our mission is to provide a compassionate, resourceful space where users can find valuable information, tools, and support for navigating the challenges of memory loss.
+                        </p>
+                        
+                    </div>
+    
+                    <div class="about__image order-2 xl:order-none max-w-[453px] mx-auto xl:max-w-none xl:mx-0">
+                        <img src="assets/bg-hero2.jpg" alt="" class="rounded-3Xl">
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+
+        <!--Contact Us-->
+        <section class="mt-[80px] xl:mt-[120px] relative z-20" id="contact">
+            <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+                <h2 class="mb-4 h2 tracking-tight text-center text-primary">Contact Us</h2>
+                
+                <form action="#" class="space-y-8">
+                    <div>
+                        <label for="email" class="block mb-2 text-md font-medium text-gray-900 ">Your email</label>
+                        <input type="email" id="email" class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 " placeholder="Enter Your Email" required>
+                    </div>
+                    <div>
+                        <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 ">Subject</label>
+                        <input type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 " placeholder="Let us know how we can help you" required>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 ">Your message</label>
+                        <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 " placeholder="Leave a comment..."></textarea>
+                    </div>
+                    <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-accent sm:w-fit  focus:ring-4 focus:outline-none focus:ring-primary-300 ">Send message</button>
+                </form>
+            </div>
+          </section>
+
+          <!--Footer-->
+          
+
+<footer class="bg-white  m-4">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="assets/logo.jpeg" class="h-14 w-[186px]" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" class="hover:underline">Memory Lane™</a>. All Rights Reserved.</span>
+    </div>
+</footer>
+
+
+    
+    
+    </main>
+
     
     <script src="js/main.js"></script>
 </body>

@@ -29,55 +29,55 @@
                     <i class="ri-menu-4-line text-4xl text-primary"></i>
                 </div>
                 <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
-                    <li class="p-2"><a href="#home">Home</a></li>
+                    <li class="p-2"><a href="./index.html">Home</a></li>
                     <li class="p-2"><a href="#about">About</a></li>
                     <li class="p-2"><a href="#contact">Contact Us</a></li>
-                    <button class="btn-accent w-[120px] h-[50px] lg:p-0 p-4 rounded-lg"><a href="./sign-up.html" class="text-white hover:text-black">Sign Up</a></button>
+                    <button class="btn-accent w-[120px] h-[50px] lg:p-0 p-2 rounded-lg"><a href="./sign-up.html" class="text-white hover:text-black">Sign Up</a></button>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Sign Up & Login Forms Section -->
-    <main class="flex justify-center items-center min-h-screen bg-white">
+    <main class="flex justify-center items-center min-h-screen bg-white font-secondary">
         <div class="container mx-auto px-4 lg:px-0">
             <div class="flex flex-col items-center justify-between gap-16 bg-white p-8 shadow-lg rounded-lg">
                 <!-- Sign Up Form -->
                 <div id="sign-up-form" class="w-full">
-                    <h2 class="text-2xl font-semibold mb-6 text-primary text-center">Create Your Account</h2>
+                    <h2 class="text-2xl font-semibold mb-6 text-primary text-center font-secondary">Create Your Account</h2>
                     <form action="#" class="space-y-4">
                         <div>
-                            <label for="username" class="block mb-2 text-sm font-medium text-gray-700">Username</label>
-                            <input type="text" id="username" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-sm" placeholder="Choose a username" required>
+                            <label for="username" class="block mb-2 text-md font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="username" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Full name" required>
                         </div>
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" id="email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-sm" placeholder="Enter your email" required>
+                            <label for="email" class="block mb-2 text-md font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your email" required>
                         </div>
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" id="password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-sm" placeholder="Create a password" required>
+                            <label for="password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Create a password" required>
                         </div>
                         <button type="submit" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300">Sign Up</button>
                     </form>
-                    <p class="mt-4 text-center text-sm text-gray-600">Already have an account? <a href="#" id="show-login" class="text-primary font-medium">Log In here</a></p>
+                    <p class="mt-4 text-center text-md text-gray-600">Already have an account? <a href="#" id="show-login" class="text-primary font-semibold text-md">Login</a></p>
                 </div>
 
                 <!-- Login Form -->
                 <div id="login-form" class="w-full hidden">
-                    <h2 class="text-2xl font-semibold mb-6 text-primary text-center">Log In to Your Account</h2>
+                    <h2 class="text-2xl font-semibold mb-6 text-primary text-center font-secondary">Welcome Back!</h2>
                     <form action="#" class="space-y-4">
                         <div>
-                            <label for="login-email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" id="login-email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-sm" placeholder="Enter your email" required>
+                            <label for="login-email" class="block mb-2 text-md font-medium text-gray-700">Email</label>
+                            <input type="email" id="login-email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your email" required>
                         </div>
                         <div>
-                            <label for="login-password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" id="login-password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-sm" placeholder="Enter your password" required>
+                            <label for="login-password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
+                            <input type="password" id="login-password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your password" required>
                         </div>
                         <button type="submit" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300">Login</button>
                     </form>
-                    <p class="mt-4 text-center text-sm text-gray-600">Don't have an account? <a href="#" id="show-sign-up" class="text-primary font-medium">Sign Up here</a></p>
+                    <p class="mt-4 text-center text-md text-gray-600">Don't have an account? <a href="#" id="show-sign-up" class="text-primary font-semibold text-md">Sign Up</a></p>
                 </div>
             </div>
         </div>
@@ -91,6 +91,7 @@
     </footer>
 
     <!--JavaScript-->
+    <script src="./js/main.js"></script>
     <script>
         const showLoginLink = document.getElementById('show-login');
         const showSignUpLink = document.getElementById('show-sign-up');

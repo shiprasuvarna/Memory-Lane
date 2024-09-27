@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script type="module" src="sign-up.js" defer></script>
     <style>
         .hidden { display: none; }
     </style>
@@ -45,10 +46,11 @@
                 <!-- Sign Up Form -->
                 <div id="sign-up-form" class="w-full">
                     <h2 class="text-2xl font-semibold mb-6 text-primary text-center font-secondary">Create Your Account</h2>
-                    <form action="#" class="space-y-4">
+                    <form action="#" method="post" class="space-y-4">
+                        <div class="text-green-500 p-2 m-2 font-semibold" id="signUpMessage" style="display: none;"></div>
                         <div>
-                            <label for="username" class="block mb-2 text-md font-medium text-gray-700">Full Name</label>
-                            <input type="text" id="username" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Full name" required>
+                            <label for="fullname" class="block mb-2 text-md font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="fullname" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Full name" required>
                         </div>
                         <div>
                             <label for="email" class="block mb-2 text-md font-medium text-gray-700">Email</label>
@@ -58,7 +60,7 @@
                             <label for="password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
                             <input type="password" id="password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Create a password" required>
                         </div>
-                        <button type="submit" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300">Sign Up</button>
+                        <button type="submit" id="submitSignUp" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300">Sign Up</button>
                     </form>
                     <p class="mt-4 text-center text-md text-gray-600">Already have an account? <a href="#" id="show-login" class="text-primary font-semibold text-md">Login</a></p>
                 </div>
@@ -66,7 +68,8 @@
                 <!-- Login Form -->
                 <div id="login-form" class="w-full hidden">
                     <h2 class="text-2xl font-semibold mb-6 text-primary text-center font-secondary">Welcome Back!</h2>
-                    <form action="#" class="space-y-4">
+                    <div id="signInMessage" class="hidden text-green-500 p-2 m-2 font-semibold" style="display: none;"></div>
+                    <form action="#" method="post" class="space-y-4">
                         <div>
                             <label for="login-email" class="block mb-2 text-md font-medium text-gray-700">Email</label>
                             <input type="email" id="login-email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your email" required>
@@ -75,7 +78,7 @@
                             <label for="login-password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
                             <input type="password" id="login-password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your password" required>
                         </div>
-                        <button type="submit" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300">Login</button>
+                        <button type="submit" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300" id="loginsubmit">Login</button>
                     </form>
                     <p class="mt-4 text-center text-md text-gray-600">Don't have an account? <a href="#" id="show-sign-up" class="text-primary font-semibold text-md">Sign Up</a></p>
                 </div>

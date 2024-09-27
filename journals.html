@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Memory Lane</title>
+        <!--CSS-->
+        <link rel="stylesheet" href="../dist/output.css">
+        <!--ICONS-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
+        <!--Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="css/swiper-bundle.min.css"> -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <script type="module" src="./sign-up.js" defer></script>
+    </head>
+</head>
+<body>
+
+    <!--Navbar-->
+    <header class="sticky top-0 h-[90px] shadow-xl z-30 bg-white">
+        <div class="container mx-auto flex justify-between h-full items-center">
+            <a href="#">
+                <img src="./assets/logo.jpeg" alt="" class="w-[200px]">
+            </a>
+            <nav>
+                <div class="cursor-pointer lg:hidden" id="nav_trigger_btn">
+                    <i class="ri-menu-4-line text-4xl text-primary"></i>
+                </div>
+                <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
+                    <li class="p-2"><a href="./patient-dashboard.html">Dashboard</a></li>
+                    <li class="p-2"><a href="./index.html#home">Home</a></li>
+                    <li class="p-2"><a href="./index.html#about">About</a></li>
+                    <li class="p-2"><a href="./index.html#contact">Contact Us</a></li>
+                    
+                    <!-- Placeholder for user info or sign-in button -->
+                    <div id="user-auth-section">
+                        <button class="btn-accent w-[120px] h-[50px] lg:p-0 p-2 rounded-lg">
+                            <a href="./sign-up.html" class="text-white hover:text-black" id="auth-btn">Sign In</a>
+                        </button>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="container mx-auto mt-10">
+        <h1 class="text-3xl font-bold text-center mb-6">Journals</h1>
+        <p>Journaling allows you to identify things that are troubling you and that are hard for you to verbalize.</p>
+
+        <div class="flex items-center justify-center mt-8">
+            <button id="openNotepad" class="btn-accent text-white px-4 py-2 rounded-lg hover:text-black">New Journal</button>
+        </div>
+        
+
+        <div id="notesContainer" class="grid grid-cols-1 gap-4 mt-4">
+            <!-- Notes will be appended here -->
+        </div>
+    </div>
+
+    <!-- Modal for Viewing Long Notes -->
+    <div id="noteModal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-6 w-11/12 max-w-lg">
+            <h2 class="text-xl font-bold mb-4">View Note</h2>
+            <p id="modalNoteText" class="whitespace-pre-wrap"></p>
+            <button id="closeModal" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Close</button>
+        </div>
+    </div>
+
+    <!-- Notepad -->
+    <div id="notepad" class="fixed inset-0 hidden bg-gray-800 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-6 w-11/12 max-w-lg">
+            <h2 class="text-xl font-bold mb-4 font-secondary">Start a new journal</h2>
+            <textarea id="noteInput" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your note here..." rows="4" style="resize: none;"></textarea>
+            <button id="addNote" class="mt-2 btn-accent text-white px-4 py-2 rounded-lg hover:bg-blue-600">Add Note</button>
+            <button id="closeNotepad" class="mt-2 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">Cancel</button>
+        </div>
+    </div>
+<script>
+    document.getElementById('openNotepad').addEventListener('click', function() {
+    document.getElementById('notepad').classList.remove('hidden');
+});
+
+document.getElementById('closeNotepad').addEventListener('click', function() {
+    document.getElementById('notepad').classList.add('hidden');
+});
+
+document.getElementById('addNote').addEventListener('click', function() {
+    const noteInput = document.getElementById('noteInput');
+    const noteText = noteInput.value;
+
+    if (noteText.trim() === '') {
+        alert('Please write a note!');
+        return;
+    }
+
+    // Create a new note element
+    const noteElement = document.createElement('div');
+    noteElement.className = 'bg-white p-4 rounded-lg shadow-md flex justify-between items-center cursor-pointer';
+    noteElement.innerHTML = `
+        <p class="truncate">${noteText}</p>
+        <button class="bg-red-500 text-white px-2 py-1 rounded-full hover:bg-red-600 deleteNote"><i class="ri-delete-bin-line"></i></button>
+    `;
+
+    // Add event listener to open note in modal
+    noteElement.addEventListener('click', function() {
+        document.getElementById('modalNoteText').innerText = noteText;
+        document.getElementById('noteModal').classList.remove('hidden');
+    });
+
+    // Add event listener to delete button
+    noteElement.querySelector('.deleteNote').addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent click event on the note element
+        noteElement.remove();
+    });
+
+    // Append the new note to the notes container
+    document.getElementById('notesContainer').appendChild(noteElement);
+
+    // Clear the input field
+    noteInput.value = '';
+    document.getElementById('notepad').classList.add('hidden'); // Close the notepad
+});
+
+// Close the modal
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('noteModal').classList.add('hidden');
+});
+
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

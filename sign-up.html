@@ -56,9 +56,23 @@
                             <label for="email" class="block mb-2 text-md font-medium text-gray-700">Email</label>
                             <input type="email" id="email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your email" required>
                         </div>
-                        <div>
+
+                        <div class="relative">
                             <label for="password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
                             <input type="password" id="password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Create a password" required>
+                            
+                            <!-- Eye icon -->
+                            <i id="togglePassword" class="ri-eye-off-fill absolute right-4 cursor-pointer text-2xl text-gray-500" style="margin-top: 15px;"></i>
+                        </div>
+                        
+                        <!-- New Dropdown for 'Sign Up As' -->
+                        <div>
+                            <label for="role" class="block mb-2 text-md font-medium text-gray-700">Sign Up As</label>
+                            <select id="signup-role" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md">
+                                <option value="patient">Patient</option>
+                                <option value="caretaker">Caretaker</option>
+                                <option value="doctor">Doctor</option>
+                            </select>
                         </div>
                         <button type="submit" id="submitSignUp" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300">Sign Up</button>
                     </form>
@@ -74,9 +88,20 @@
                             <label for="login-email" class="block mb-2 text-md font-medium text-gray-700">Email</label>
                             <input type="email" id="login-email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your email" required>
                         </div>
+                        <div class="relative">
+                            <label for="password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Create a password" required>
+                            <i id="togglePassword" class="ri-eye-off-fill absolute right-4 cursor-pointer text-2xl text-gray-500" style="margin-top: 15px;"></i>
+                        </div>
+                       
+
                         <div>
-                            <label for="login-password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
-                            <input type="password" id="login-password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your password" required>
+                            <label for="role" class="block mb-2 text-md font-medium text-gray-700">Login As</label>
+                            <select id="login-role" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md">
+                                <option value="patient">Patient</option>
+                                <option value="caretaker">Caretaker</option>
+                                <option value="doctor">Doctor</option>
+                            </select>
                         </div>
                         <button type="submit" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300" id="loginsubmit">Login</button>
                     </form>
@@ -114,6 +139,20 @@
             loginForm.classList.add('hidden');
             signUpForm.classList.remove('hidden');
         });
+
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function () {
+    // Toggle the type attribute between 'password' and 'text'
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+    // Toggle the eye icon between eye-fill and eye-off-fill
+    this.classList.toggle('ri-eye-fill');
+    this.classList.toggle('ri-eye-off-fill');
+});
+
     </script>
 </body>
 </html>

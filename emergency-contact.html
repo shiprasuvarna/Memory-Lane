@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lane</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="../dist/output.css">
+    <!--ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script type="module" src="./sign-up.js" defer></script>
+    <style>
+        .contact-item {
+            @apply p-4 mb-8 shadow-md flex items-center justify-between;
+            border-bottom: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+        }
+    </style>
+</head>
+<body>
+    <!--Navbar-->
+    <header class="sticky top-0 h-[90px] shadow-xl z-30 bg-white">
+        <div class="container mx-auto flex justify-between h-full items-center">
+            <a href="#">
+                <img src="./assets/logo.jpeg" alt="" class="w-[200px]">
+            </a>
+            <nav>
+                <div class="cursor-pointer lg:hidden" id="nav_trigger_btn">
+                    <i class="ri-menu-4-line text-4xl text-primary"></i>
+                </div>
+                <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
+                    <li class="p-2"><a href="./patient-dashboard.html">Dashboard</a></li>
+                    <li class="p-2"><a href="./index.html#home">Home</a></li>
+                    <li class="p-2"><a href="./index.html#about">About</a></li>
+                    <li class="p-2"><a href="./index.html#contact">Contact Us</a></li>
+                    <div id="user-auth-section">
+                        <button class="btn-accent w-[120px] h-[50px] lg:p-0 p-2 rounded-lg">
+                            <a href="./sign-up.html" class="text-white hover:text-black" id="auth-btn">Sign In</a>
+                        </button>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mt-4 flex flex-col justify-center items-center lg:flex-row lg:gap-4 lg:items-start">
+        <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md mb-4">
+            <h2 class="text-2xl font-semibold text-center mb-6">Add Emergency Contact</h2>
+            <form id="contactForm" class="flex flex-col mb-4">
+                <input type="text" id="name" placeholder="Contact Name" required class="mb-2 p-2 border rounded-md">
+                <input type="text" id="phone" placeholder="Phone Number" required class="mb-4 p-2 border rounded-md">
+                <button type="submit" class="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Add Contact</button>
+            </form>
+        </div>
+
+        <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-center mb-6">Emergency Contacts List</h2>
+            <div id="contactsList"></div>
+        </div>
+    </div>
+
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const contactsList = document.getElementById('contactsList');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            // Create a new contact element
+            const contactItem = document.createElement('div');
+            contactItem.classList.add('contact-item');
+            contactItem.innerHTML = `
+            <div class="mb-8 justify-center flex-col items-center">
+                <div class="flex items-center gap-2">
+                    <i class="ri-user-line text-xl mr-2"></i>
+                    <strong>${name}</strong>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="ri-phone-line text-xl mr-2"></i>
+                    <span>${phone}</span>
+                </div>
+            </div>
+            `;
+
+            // Append the new contact to the contacts list
+            contactsList.appendChild(contactItem);
+
+            // Clear the input fields
+            contactForm.reset();
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

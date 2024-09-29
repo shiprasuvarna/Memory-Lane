@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lane</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="../dist/output.css">
+    <!--ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script type="module" src="./sign-up.js" defer></script>
+    <style>
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #d1d5db; /* Tailwind gray-300 */
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        /* Styling for the checkbox */
+        input[type="checkbox"] {
+            width: 24px;  /* Bigger width */
+            height: 24px; /* Bigger height */
+            margin-right: 12px; /* Spacing between checkbox and text */
+        }
+        /* Button Styles */
+        .action-btn {
+            margin-left: 8px;
+            padding: 4px 8px;
+            background-color: #e5e7eb; /* Tailwind gray-200 */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!--Navbar-->
+    <header class="sticky top-0 h-[90px] shadow-xl z-30 bg-white">
+        <div class="container mx-auto flex justify-between h-full items-center">
+            <a href="#">
+                <img src="./assets/logo.jpeg" alt="" class="w-[200px]">
+            </a>
+            <nav>
+                <div class="cursor-pointer lg:hidden" id="nav_trigger_btn">
+                    <i class="ri-menu-4-line text-4xl text-primary"></i>
+                </div>
+                <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
+                    <li class="p-2"><a href="./patient-dashboard.html">Dashboard</a></li>
+                    <li class="p-2"><a href="./index.html#home">Home</a></li>
+                    <li class="p-2"><a href="./index.html#about">About</a></li>
+                    <li class="p-2"><a href="./index.html#contact">Contact Us</a></li>
+                    
+                    <!-- Placeholder for user info or sign-in button -->
+                    <div id="user-auth-section">
+                        <button class="btn-accent w-[120px] h-[50px] lg:p-0 p-2 rounded-lg">
+                            <a href="./sign-up.html" class="text-white hover:text-black" id="auth-btn">Sign In</a>
+                        </button>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- To-Do Lists -->
+    <div class="flex flex-col lg:flex-row lg:gap-4 justify-center items-start">
+        <!-- Morning Tasks -->
+        <div class="mt-8 flex flex-col justify-center items-center">
+            <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-center mb-6">Morning</h2>
+                <div id="morningTasks" class="mb-4"></div>
+                <button id="addMorningTaskBtn" class="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 w-full">Add New Task</button>
+            </div>
+        </div>
+
+        <!-- Afternoon Tasks -->
+        <div class="mt-8 flex flex-col justify-center items-center">
+            <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-center mb-6">Afternoon</h2>
+                <div id="afternoonTasks" class="mb-4"></div>
+                <button id="addAfternoonTaskBtn" class="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 w-full">Add New Task</button>
+            </div>
+        </div>
+
+        <!-- Evening Tasks -->
+        <div class="mt-8 flex flex-col justify-center items-center">
+            <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold text-center mb-6">Evening</h2>
+                <div id="eveningTasks" class="mb-4"></div>
+                <button id="addEveningTaskBtn" class="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 w-full">Add New Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding New Task -->
+    <div id="taskModal" class="modal flex">
+        <div class="modal-content">
+            <h2 class="text-xl font-semibold mb-4" id="modalTitle">Add New Task</h2>
+            <input type="text" id="taskTitle" placeholder="Task Title" class="mb-4 p-2 border rounded-md w-full">
+            <button id="saveTaskBtn" class="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 w-full">Save Task</button>
+            <button id="closeModalBtn" class="bg-red-500 text-white py-2 rounded-md hover:bg-red-600 w-full mt-2">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const morningTasks = [
+            { title: 'Wash, brush teeth, get dressed', completed: false },
+            { title: 'Prepare and eat breakfast', completed: false },
+            { title: 'Have a conversation over coffee', completed: false },
+            { title: 'Read newspaper, reminisce about old photos', completed: false },
+            { title: 'Take a break, have some quiet time', completed: false },
+            { title: 'Do some chores together', completed: false },
+            { title: 'Take a walk, play an active game', completed: false },
+
+        ];
+
+        const afternoonTasks = [
+            { title: 'Prepare and eat lunch, read mail, wash dishes', completed: false },
+            { title: 'Listen to music, do crossword puzzles, watch TV', completed: false },
+            { title: 'Do some gardening, take a walk, visit a friend', completed: false },
+            { title: 'Take a short break or nap', completed: false },
+        ];
+
+        const eveningTasks = [
+            { title: 'Prepare and eat dinner, clean up the kitchen', completed: false },
+            { title: 'Reminisce over coffee and dessert', completed: false },
+            { title: 'Play cards, watch a movie, give a massage', completed: false },
+            { title: 'Journal your entire day', completed: false },
+            { title: 'Take a bath, get ready for bed', completed: false },
+        ];
+
+        let currentEditIndex = null;
+        let currentTaskList = '';
+
+        // Display tasks in the respective lists
+        function displayTasks(taskList, elementId) {
+            const taskContainer = document.getElementById(elementId);
+            taskContainer.innerHTML = ''; // Clear existing tasks
+            taskList.forEach((task, index) => {
+                const taskItem = document.createElement('div');
+                taskItem.classList.add('task-item');
+                taskItem.innerHTML = `
+                    <div class="flex items-center">
+                        <input type="checkbox" id="task-${elementId}-${index}" ${task.completed ? 'checked' : ''} class="mr-2" onchange="toggleTaskCompletion(${index}, '${elementId}')">
+                        <div class="${task.completed ? 'completed' : ''}">
+                            <h3 class="font-secondary">${task.title}</h3>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="action-btn edit-btn" onclick="editTask(${index}, '${elementId}')"><i class="ri-pencil-fill"></i></button>
+                        <button class="action-btn delete-btn" onclick="deleteTask(${index}, '${elementId}')"><i class="ri-delete-bin-6-fill"></i></button>
+                    </div>
+                `;
+                taskContainer.appendChild(taskItem);
+            });
+        }
+
+        // Toggle task completion
+        function toggleTaskCompletion(index, listId) {
+            if (listId === 'morningTasks') {
+                morningTasks[index].completed = !morningTasks[index].completed;
+                displayTasks(morningTasks, 'morningTasks');
+            } else if (listId === 'afternoonTasks') {
+                afternoonTasks[index].completed = !afternoonTasks[index].completed;
+                displayTasks(afternoonTasks, 'afternoonTasks');
+            } else if (listId === 'eveningTasks') {
+                eveningTasks[index].completed = !eveningTasks[index].completed;
+                displayTasks(eveningTasks, 'eveningTasks');
+            }
+        }
+
+        // Edit task
+        function editTask(index, listId) {
+            currentEditIndex = index;
+            currentTaskList = listId;
+
+            let taskTitle;
+            if (listId === 'morningTasks') {
+                taskTitle = morningTasks[index].title;
+            } else if (listId === 'afternoonTasks') {
+                taskTitle = afternoonTasks[index].title;
+            } else if (listId === 'eveningTasks') {
+                taskTitle = eveningTasks[index].title;
+            }
+
+            document.getElementById('taskTitle').value = taskTitle;
+            taskModal.style.display = 'flex';
+        }
+
+        // Delete task
+        function deleteTask(index, listId) {
+            if (listId === 'morningTasks') {
+                morningTasks.splice(index, 1);
+                displayTasks(morningTasks, 'morningTasks');
+            } else if (listId === 'afternoonTasks') {
+                afternoonTasks.splice(index, 1);
+                displayTasks(afternoonTasks, 'afternoonTasks');
+            } else if (listId === 'eveningTasks') {
+                eveningTasks.splice(index, 1);
+                displayTasks(eveningTasks, 'eveningTasks');
+            }
+        }
+
+        // Open modal to add new task
+        const taskModal = document.getElementById('taskModal');
+        const taskTitleInput = document.getElementById('taskTitle');
+
+        function openTaskModal(listId) {
+            currentEditIndex = null;  // Reset edit index
+            currentTaskList = listId;
+            taskModal.style.display = 'flex';
+        }
+
+        // Close modal
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            taskModal.style.display = 'none';
+            taskTitleInput.value = ''; // Clear the input field
+        });
+
+        // Add/Edit task to the respective list
+        document.getElementById('saveTaskBtn').addEventListener('click', () => {
+            const newTask = {
+                title: taskTitleInput.value,
+                completed: false
+            };
+
+            if (currentEditIndex === null) { // Adding new task
+                if (currentTaskList === 'morningTasks') {
+                    morningTasks.push(newTask);
+                    displayTasks(morningTasks, 'morningTasks');
+                } else if (currentTaskList === 'afternoonTasks') {
+                    afternoonTasks.push(newTask);
+                    displayTasks(afternoonTasks, 'afternoonTasks');
+                } else if (currentTaskList === 'eveningTasks') {
+                    eveningTasks.push(newTask);
+                    displayTasks(eveningTasks, 'eveningTasks');
+                }
+            } else { // Editing existing task
+                if (currentTaskList === 'morningTasks') {
+                    morningTasks[currentEditIndex].title = taskTitleInput.value;
+                    displayTasks(morningTasks, 'morningTasks');
+                } else if (currentTaskList === 'afternoonTasks') {
+                    afternoonTasks[currentEditIndex].title = taskTitleInput.value;
+                    displayTasks(afternoonTasks, 'afternoonTasks');
+                } else if (currentTaskList === 'eveningTasks') {
+                    eveningTasks[currentEditIndex].title = taskTitleInput.value;
+                    displayTasks(eveningTasks, 'eveningTasks');
+                }
+            }
+
+            taskModal.style.display = 'none';
+            taskTitleInput.value = ''; // Clear the input field
+        });
+
+        // Open modal for adding a new task
+        document.getElementById('addMorningTaskBtn').addEventListener('click', () => openTaskModal('morningTasks'));
+        document.getElementById('addAfternoonTaskBtn').addEventListener('click', () => openTaskModal('afternoonTasks'));
+        document.getElementById('addEveningTaskBtn').addEventListener('click', () => openTaskModal('eveningTasks'));
+
+        // Initial task display
+        displayTasks(morningTasks, 'morningTasks');
+        displayTasks(afternoonTasks, 'afternoonTasks');
+        displayTasks(eveningTasks, 'eveningTasks');
+    </script>
+</body>
+</html>

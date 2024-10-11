@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Lane</title>
     <!--CSS-->
-    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="./dist/output.css">
     <!--ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
     <!--Fonts-->
@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="css/swiper-bundle.min.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script type="module" src="./sign-up.js" defer></script>
+    <script type="module" src="./js/sign-up.js" defer></script>
 </head>
 <body>
   <!-- Nav bar   -->
@@ -28,7 +28,7 @@
                 <i class="ri-menu-4-line text-4xl text-primary"></i>
             </div>
             <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
-                <li class="p-2"><a href="./index.html#home">Home</a></li>
+                <li class="p-2"><a href="./index.html">Home</a></li>
                 <li class="p-2"><a href="./index.html#about">About</a></li>
                 <li class="p-2"><a href="./index.html#contact">Contact Us</a></li>
                 
@@ -58,7 +58,7 @@
               </div>
               <h3 class="h3 mb-5">Medicines Prescriptions</h3>
               <p class="mb-5 max-w-md mx-auto">Pescriptions and reports of the patients for better accesibility.</p>
-              <a href="#" class="font-medium">Click here
+              <a href="./upload.html" class="font-medium">Click here
                   <i class="ri-arrow-right-line"></i>
               </a>
           </div>
@@ -71,7 +71,7 @@
               </div>
               <h3 class="h3 mb-5">Medicines Checklist</h3>
               <p class="mb-5 max-w-md mx-auto">Checklist to keep track of the medicines intake by the patient</p>
-              <a href="#" class="font-medium">Click Here
+              <a href="./results.html" class="font-medium">Click Here
                   <i class="ri-arrow-right-line"></i>
               </a>
           </div>
@@ -110,6 +110,8 @@
 
  
     <script src="https://kit.fontawesome.com/cb88b54bf5.js" crossorigin="anonymous"></script>  
-    <script src="./js/main.js"></script>
+    <script src="../static/js/main.js"></script>
+        // Passing Flask route URL into JavaScript
+        
 </body>
 </html>

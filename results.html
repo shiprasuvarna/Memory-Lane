@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Medicines</title>
+</head>
+<body>
+    <h1>Extracted Medicines with Dosages</h1>
+    <table border="1">
+        <tr>
+            <th>Medicine Name</th>
+            <th>Dosage</th>
+        </tr>
+        {% for medicine in medicines %}
+        <tr>
+            <td>{{ medicine['Medicine Name'] }}</td>
+            <td>{{ medicine['Dosage'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Upload another file</a>
+</body>
+</html>

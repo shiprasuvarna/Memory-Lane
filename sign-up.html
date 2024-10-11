@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Lane - Sign Up</title>
     <!--CSS-->
-    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="./dist/output.css">
     <!--ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css">
     <!--Fonts-->
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script type="module" src="sign-up.js" defer></script>
+    <script type="module" src="./js/sign-up.js" defer></script>
     <style>
         .hidden { display: none; }
     </style>
@@ -23,7 +23,7 @@
     <header class="sticky top-0 h-[90px] shadow-xl z-30 bg-white">
         <div class="container mx-auto flex justify-between h-full items-center">
             <a href="#">
-                <img src="assets/logo.jpeg" alt="Memory Lane Logo" class="w-[200px]">
+                <img src="./assets/logo.jpeg" alt="Memory Lane Logo" class="w-[200px]">
             </a>
             <nav>
                 <div class="cursor-pointer lg:hidden " id="nav_trigger_btn">
@@ -31,8 +31,8 @@
                 </div>
                 <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
                     <li class="p-2"><a href="./index.html">Home</a></li>
-                    <li class="p-2"><a href="#about">About</a></li>
-                    <li class="p-2"><a href="#contact">Contact Us</a></li>
+                    <li class="p-2"><a href="./index.html#about">About</a></li>
+                    <li class="p-2"><a href="./index.html#contact">Contact Us</a></li>
                     <button class="btn-accent w-[120px] h-[50px] lg:p-0 p-2 rounded-lg"><a href="./sign-up.html" class="text-white hover:text-black">Sign Up</a></button>
                 </ul>
             </nav>
@@ -69,11 +69,20 @@
                         <div>
                             <label for="role" class="block mb-2 text-md font-medium text-gray-700">Sign Up As</label>
                             <select id="signup-role" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md">
-                                <option value="patient">Patient</option>
                                 <option value="caretaker">Caretaker</option>
+                                <option value="patient">Patient</option>
                                 <option value="doctor">Doctor</option>
                             </select>
                         </div>
+
+                        <!-- Doctor Selection Dropdown (hidden by default) -->
+                        <div id="doctor-dropdown-container" class="hidden mt-4">
+                            <label for="doctor-selection" class="block mb-2 text-md font-medium text-gray-700">Select Doctor</label>
+                            <select id="doctor-selection" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md">
+                                <!-- Doctors will be populated here dynamically -->
+                            </select>
+                        </div>
+                        
                         <button type="submit" id="submitSignUp" class="w-full py-3 px-5 bg-accent text-white text-center rounded-lg font-medium focus:ring-4 focus:outline-none focus:ring-primary-300">Sign Up</button>
                     </form>
                     <p class="mt-4 text-center text-md text-gray-600">Already have an account? <a href="#" id="show-login" class="text-primary font-semibold text-md">Login</a></p>
@@ -89,8 +98,8 @@
                             <input type="email" id="login-email" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Enter your email" required>
                         </div>
                         <div class="relative">
-                            <label for="password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
-                            <input type="password" id="password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Create a password" required>
+                            <label for="login-password" class="block mb-2 text-md font-medium text-gray-700">Password</label>
+                            <input type="password" id="login-password" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary text-md" placeholder="Create a password" required>
                             <i id="togglePassword" class="ri-eye-off-fill absolute right-4 cursor-pointer text-2xl text-gray-500" style="margin-top: 15px;"></i>
                         </div>
                        
@@ -119,7 +128,7 @@
     </footer>
 
     <!--JavaScript-->
-    <script src="./js/main.js"></script>
+    <script src="./js/sign-up.js"></script>
     <script>
         const showLoginLink = document.getElementById('show-login');
         const showSignUpLink = document.getElementById('show-sign-up');

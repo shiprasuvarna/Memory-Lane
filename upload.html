@@ -34,6 +34,7 @@
                     <i class="ri-menu-4-line text-4xl text-primary"></i>
                 </div>
                 <ul class="fixed w-full h-0 p-0 bg-white overflow-hidden border-t top-[90px] left-0 right-0 flex flex-col gap-4 lg:relative lg:flex-row lg:p-0 lg:top-0 lg:border-none lg:h-full transition-all duration-300" id="nav_menu">
+                    <li class="p-2"><a href="./caretaker-dashboard.html">Dashboard</a></li>
                     <li class="p-2"><a href="./index.html">Home</a></li>
                     <li class="p-2"><a href="./index.html#about">About</a></li>
                     <li class="p-2"><a href="./index.html#contact">Contact Us</a></li>
@@ -52,17 +53,110 @@
 
 
     <main class="max-w-[1920px] mx-auto bg-white overflow-hidden">
-        <h1>Upload Image or PDF to Extract Medicine Names</h1>        
-        <form id="uploadForm" enctype="multipart/form-data">
-            <input type="file" id="fileInput" accept="image/*,application/pdf" required>
-            <button type="submit">Upload</button>
+        <h2 class="flex justify-center items-center mt-10 h2">Upload Prescription</h1>        
+        <form id="uploadForm" enctype="multipart/form-data" class="mb-6 flex justify-center items-center gap-4 mt-8">
+            <input type="file" id="fileInput" accept="image/*,application/pdf" class="block p-2 border border-gray-300 rounded-md" required>
+            <button type="submit" class="btn-accent text-white px-6 py-2 rounded-lg">Upload</button>
         </form>
-        <div id="ocrResult"></div>
+
+        <div id="ocrResult" class="mt-4 mx-auto w-full max-w-md">
+            <h3 class="h3 flex justify-center items-center">Patients Medicines</h2>
+            <ul id="medicineList" class="list-none space-y-2"></ul>
+        </div>
     </main>
     
 
     
     <script src="./js/main.js"></script>
+    <script>
+        const uploadForm = document.getElementById('uploadForm');
+        const medicineList = document.getElementById('medicineList');
+
+        if (uploadForm) {
+            uploadForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const file = document.getElementById('fileInput').files[0];
+                if (!file) {
+                    alert('Please select a file.');
+                    return;
+                }
+
+                // Use FileReader to read the file and process it for OCR
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fileURL = e.target.result;
+                    if (file.type.includes('image')) {
+                        processImageOCR(fileURL);
+                    } else {
+                        alert('PDF OCR is not implemented yet.');
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function processImageOCR(imageURL) {
+            Tesseract.recognize(
+                imageURL,
+                'eng',
+                { logger: (m) => console.log(m) }
+            ).then(({ data: { text } }) => {
+                console.log('Extracted text:', text);
+                displayExtractedMedicines(extractMedicineNamesAndDosages(text));
+            }).catch(err => {
+                console.error('OCR failed:', err);
+            });
+        }
+
+        function extractMedicineNamesAndDosages(text) {
+            const dementiaMedicines = [
+                "Donepezil", "Rivastigmine", "Galantamine", "Memantine",
+                "Namenda", "Exelon", "Razadyne", "Aricept", "Namzaric",
+                "Olanzapine", "Risperidone"
+            ];
+
+            const dosagePattern = /(\d+(\.\d+)?\s*(mg|ml|tablets|capsules|pills|mcg|g))/gi;
+            const extractedMedicines = [];
+
+            dementiaMedicines.forEach(medicine => {
+                const regex = new RegExp(`${medicine}.{0,30}${dosagePattern.source}`, 'gi');
+                const match = text.match(regex);
+                if (match) {
+                    const dosage = match[0].match(dosagePattern);
+                    extractedMedicines.push({
+                        "Medicine Name": medicine,
+                        "Dosage": dosage ? dosage[0] : "No dosage found"
+                    });
+                }
+            });
+
+            return extractedMedicines;
+        }
+
+        function displayExtractedMedicines(medicines) {
+            if (medicines.length === 0) {
+                alert('No dementia medicines found.');
+                return;
+            }
+
+            medicineList.innerHTML = '';  // Clear previous results
+
+            medicines.forEach(medicine => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <input type="checkbox" class="mr-2 rounded-md">
+                    ${medicine['Medicine Name']} - ${medicine['Dosage']}
+                `;
+                listItem.querySelector('input').addEventListener('change', function() {
+                    listItem.classList.toggle('line-through');
+                    listItem.classList.toggle('bg-green-100');
+                });
+                listItem.classList.add('flex', 'items-center', 'bg-green-50', 'px-4', 'py-2', 'rounded-lg', 'shadow-sm');
+                medicineList.appendChild(listItem);
+            });
+        }
+    </script>
+
 
    
 </body>
